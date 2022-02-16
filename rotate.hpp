@@ -232,17 +232,7 @@ namespace hpx { namespace parallel { inline namespace v1 {
                     policy.parameters(), policy.executor()) < 1 ?
                 1 :
                 cores;
-            /*
-            std::size_t cores_right = 1;
-
-            if(size_right > 0){
-                double partition_size_ratio = double(size_left) / size_right;
-                cores_right = std::size_t((1-partition_size_ratio) * cores) < 1 ?
-                    1 : cores_right;
-            }
-            // when size_right==0 & cores==1, cores_left =0, but it should be at least 1.
-            std::size_t cores_left = (cores - cores_right) < 1? 1 : cores_left; 
-            */
+         
 
             std::size_t cores_left = 1;
             if (size_right > 0)
