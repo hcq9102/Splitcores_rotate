@@ -1,7 +1,10 @@
 # Splitcores_rotate
 outline:
+
 //a. files : modified rotate algorithm rotate.hpp and benchmark hpx_rotate.cpp
+
 //b. steps for doing the test
+
 //c. FOLDER of local test : Local Test_splitcores
 
 -------------------------------------
