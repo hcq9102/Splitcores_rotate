@@ -10,13 +10,15 @@ a. Source files:
 1.algorithm file:    
 rotate.hpp: the modified part, please see https://github.com/hcq9102/Splitcores_rotate/blob/main/rotate.hpp#L217-L275 
 
-2. benchmark file
+2.benchmark file
+
 hpx_rotate.cpp
 
 ------------------------------------------------------------------------------------------------------------------------
 b. HOW I did on rostam
-#begin
-1. build and install hpx on rostam
+
+1. build and install hpx on rostam:
+
 git clone the hpx folder from Ste||ar group
 modified the rotate.hpp file as shows https://github.com/hcq9102/Splitcores_rotate/blob/main/rotate.hpp#L217-L275 .
 then 
@@ -24,7 +26,8 @@ $cmake flags~~~
 $make
 $make install
 
-2. do benchmark test
+2. do benchmark test:
+
 mkdir for benchmark : 
                       benchmark file = hpx_rotate.cpp
                       cmakelist.txt
@@ -40,12 +43,13 @@ $make
 ---  if I want to try another threads y: change the name of CSV files in hpx_rotate.cpp first; 
       :wq                
       $make
+      
       get new executable file hpx_rotate
+      
       $./hpx_rotate --hpx:threads= y
 
 .....
 .....
-#end
 -------------------------------------------------------------------------------------------
 
 c. FOLDER of local test : Local Test_splitcores
