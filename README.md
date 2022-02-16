@@ -22,11 +22,16 @@ b. HOW I did on rostam
 
 1. build and install hpx on rostam:
 
-git clone the hpx folder from Ste||ar group
-modified the rotate.hpp file as shows https://github.com/hcq9102/Splitcores_rotate/blob/main/rotate.hpp#L217-L275 .
-then 
+git clone the hpx folder from Ste||ar group;
+
+Then modified the rotate.hpp file as shows https://github.com/hcq9102/Splitcores_rotate/blob/main/rotate.hpp#L217-L275 .
+
+then
+
 $cmake flags~~~
+
 $make
+
 $make install
 
 2. do benchmark test:
@@ -38,13 +43,18 @@ mkdir for benchmark :
 $cmake flags(find the installed HPX)    
 $make
 
---- executable file : hpx_rotate
---- comamnd line: ./hpx_rotate --hpx:threads= x
+---get executable file : hpx_rotate
+
+    --- comamnd line: ./hpx_rotate --hpx:threads= x
 
                   get two XX.CSV files for each thread.
                   
----  if I want to try another threads y: change the name of CSV files in hpx_rotate.cpp first; 
-      :wq                
+---  if I want to try another threads y: 
+
+change the name of CSV files in hpx_rotate.cpp first; 
+
+      :wq  
+      
       $make
       
       get new executable file hpx_rotate
@@ -56,7 +66,9 @@ $make
 -------------------------------------------------------------------------------------------
 
 c. FOLDER of local test : Local Test_splitcores
-see it(Local Test_splitcores) in this repository.
+
+see it(Local Test_splitcores) in this repository;
+
 put all results together in rotate_midcores.xlsx.
 
 
