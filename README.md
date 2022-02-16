@@ -57,5 +57,6 @@ $make
 
 c. FOLDER of local test : Local Test_splitcores
 see it(Local Test_splitcores) in this repository.
+put all results together in rotate_midcores.xlsx.
 
 
