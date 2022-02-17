@@ -218,37 +218,33 @@ namespace hpx { namespace parallel { inline namespace v1 {
             std::ptrdiff_t size_right = std::distance(new_first, last);
 
             /*
-            need to deal with 4 cases: 
-            //cores >=1 
-            // size_right == 0 
-            // cores_left>=1 & cores_right >=1 
+            need to deal with 4 cases:
+            //cores >=1
+            // size_right == 0
+            // cores_left>=1 & cores_right >=1
             //cores_left+cores_right = cores;
 
             */
 
             // get number of cores currently used
-            std::size_t cores =
-                execution::processing_units_count(
-                    policy.parameters(), policy.executor()) < 1 ?
-                1 :
-                cores;
-         
+            std::size_t cores = execution::processing_units_count(
+                policy.parameters(), policy.executor());
 
             std::size_t cores_left = 1;
             if (size_right > 0)
             {
-                double partition_size_ratio = double(size_left) / size_right;
-                cores_left = std::max(
+                double partition_size_ratio =
+                    double(size_left) / (size_left + size_right);
+                cores_left = (std::max)(
                     std::size_t(1), std::size_t(partition_size_ratio * cores));
                 // avoid cores_left =0 after integer rounding
             }
+
             // when size_right==0 & cores==1, cores_right =0, but it should be at least 1.
             std::size_t cores_right =
-                std::max(std::size_t(1), cores - cores_left);
+                (std::max)(std::size_t(1), cores - cores_left);
 
-            auto p = hpx::execution::parallel_task_policy()
-                         .on(policy.executor())
-                         .with(policy.parameters());
+            auto p = policy(hpx::execution::task);
 
             // instantiate num_cores
             hpx::execution::num_cores numcores1(cores_left);
