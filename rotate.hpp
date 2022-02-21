@@ -252,20 +252,17 @@ namespace hpx { namespace parallel { inline namespace v1 {
 
             detail::reverse<FwdIter> r;
             return dataflow(
+                hpx::launch::sync,
                 [=](hpx::future<FwdIter>&& f1,
                     hpx::future<FwdIter>&& f2) mutable
-                -> hpx::future<util::in_out_result<FwdIter, Sent>> {
+                -> util::in_out_result<FwdIter, Sent> {
                     // propagate exceptions
                     f1.get();
                     f2.get();
 
-                    hpx::future<FwdIter> f = r.call2(p, non_seq(), first, last);
-                    return f.then([=](hpx::future<FwdIter>&& f) mutable
-                        -> util::in_out_result<FwdIter, Sent> {
-                        f.get();    // propagate exceptions
-                        std::advance(first, detail::distance(new_first, last));
-                        return util::in_out_result<FwdIter, Sent>{first, last};
-                    });
+                    r.call2(p(hxp::execution::non_task), non_seq(), first, last);
+                    std::advance(first, detail::distance(new_first, last));
+                    return util::in_out_result<FwdIter, Sent>{first, last};
                 },
                 r.call2(p.with(numcores1), non_seq(), first, new_first),
                 r.call2(p.with(numcores2), non_seq(), new_first, last));
