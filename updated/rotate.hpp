@@ -186,6 +186,7 @@ namespace hpx {
 #include <hpx/modules/execution.hpp>
 #include <hpx/pack_traversal/unwrap.hpp>
 
+#include <hpx/execution/executors/num_cores.hpp>
 #include <hpx/executors/execution_policy.hpp>
 #include <hpx/parallel/algorithms/copy.hpp>
 #include <hpx/parallel/algorithms/detail/dispatch.hpp>
@@ -195,8 +196,10 @@ namespace hpx {
 #include <hpx/parallel/util/detail/sender_util.hpp>
 #include <hpx/parallel/util/result_types.hpp>
 #include <hpx/parallel/util/transfer.hpp>
+#include <hpx/executors/execution_policy_parameters.hpp>
 
 #include <algorithm>
+#include <cstddef>
 #include <iterator>
 #include <type_traits>
 #include <utility>
